@@ -1,6 +1,6 @@
 {
-  "name": "@vijhhh2/saml2js",
-  "version": "1.0.0-alpha.2",
+  "name": "@vijhhh2/saml2-js",
+  "version": "3.0.4-alpha.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,6 +12,10 @@
   },
   "author": "vijay",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/vijhhh2/saml2js"
+  },
+  "readme": "https://github.com/vijhhh2/saml2js#readme",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.3",
     "async": "^3.2.4",
