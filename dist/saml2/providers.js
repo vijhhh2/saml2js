@@ -33,8 +33,8 @@ class ServiceProvider {
         if (options.notbefore_skew == null) {
             options.notbefore_skew = 1;
         }
-        this.alt_private_keys = [...this.alt_private_keys] || [];
-        this.alt_certs = [...this.alt_certs] || [];
+        this.alt_private_keys = [...(this.alt_private_keys || [])];
+        this.alt_certs = [...(this.alt_certs || [])];
         this.shared_options = (0, lodash_1.pick)(options, 'force_authn', 'auth_context', 'nameid_format', 'sign_get_request', 'allow_unencrypted_assertion', 'audience', 'notbefore_skew');
     }
     // Returns:
@@ -157,7 +157,7 @@ class ServiceProvider {
                             }));
                         }
                         response.type = 'authn_response';
-                        return (0, saml2_1.parse_authn_response)(saml_response, [this.private_key, ...this.alt_private_keys], identity_provider.certificates, options.allow_unencrypted_assertion, options.ignore_signature, options.require_session_index, options.ignore_timing, options.notbefore_skew, options.audience, cb_wf);
+                        return (0, saml2_1.parse_authn_response)(saml_response, [this.private_key, ...(this.alt_private_keys || [])], identity_provider.certificates, options.allow_unencrypted_assertion, options.ignore_signature, options.require_session_index, options.ignore_timing, options.notbefore_skew, options.audience, cb_wf);
                     case saml_response.getElementsByTagNameNS(saml2_1.XMLNS.SAMLP, 'LogoutResponse').length !== 1:
                         if (!(0, saml2_1.check_status_success)(saml_response)) {
                             return cb_wf(new SAMLError_1.SAMLError('SAML Response was not success!', {
@@ -265,7 +265,7 @@ class ServiceProvider {
     // Returns:
     //   XML metadata, used during initial SAML configuration
     create_metadata() {
-        const certs = [this.certificate, ...this.alt_certs];
+        const certs = [this.certificate, ...(this.alt_certs || [])];
         return (0, saml2_1.create_metadata)(this.entity_id, this.assert_endpoint, certs, certs);
     }
 }
