@@ -81,8 +81,8 @@ export class ServiceProvider {
         if (options.notbefore_skew == null) {
             options.notbefore_skew = 1;
         }
-        this.alt_private_keys = [...this.alt_private_keys] || [];
-        this.alt_certs = [...this.alt_certs] || [];
+        this.alt_private_keys = [...(this.alt_private_keys || [])]
+        this.alt_certs = [...(this.alt_certs || [])];
         this.shared_options = pick(
             options,
             'force_authn',
@@ -318,7 +318,7 @@ export class ServiceProvider {
                             response.type = 'authn_response';
                             return parse_authn_response(
                                 saml_response,
-                                [this.private_key, ...this.alt_private_keys],
+                                [this.private_key, ...(this.alt_private_keys || [])],
                                 identity_provider.certificates,
                                 options.allow_unencrypted_assertion,
                                 options.ignore_signature,
@@ -491,7 +491,7 @@ export class ServiceProvider {
     // Returns:
     //   XML metadata, used during initial SAML configuration
     create_metadata() {
-        const certs = [this.certificate, ...this.alt_certs];
+        const certs = [this.certificate, ...(this.alt_certs || [])];
         return create_metadata(
             this.entity_id,
             this.assert_endpoint,
