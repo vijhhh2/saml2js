@@ -68,7 +68,7 @@ class ServiceProvider {
                     uri.query.RelayState = options.relay_state;
                 }
             }
-            return cb(null, new URL(uri), id);
+            return cb(null, (0, url_1.format)(uri), id);
         });
     }
     // Returns:

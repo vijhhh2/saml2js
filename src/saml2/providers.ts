@@ -146,7 +146,7 @@ export class ServiceProvider {
                     uri.query.RelayState = options.relay_state;
                 }
             }
-            return cb(null, new URL(uri), id);
+            return cb(null, format(uri), id);
         });
     }
 
