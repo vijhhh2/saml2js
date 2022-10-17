@@ -1,0 +1,31 @@
+{
+  "name": "saml2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vijay",
+  "license": "MIT",
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.2",
+    "async": "^3.2.4",
+    "debug": "^4.3.4",
+    "lodash": "^4.17.21",
+    "xml-crypto": "^2.1.4",
+    "xml-encryption": "^2.0.0",
+    "xmlbuilder2": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.15",
+    "@types/debug": "^4.1.7",
+    "@types/lodash": "^4.14.186",
+    "@types/xml-crypto": "^1.4.2",
+    "@types/xml-encryption": "^1.2.1"
+  }
+}
